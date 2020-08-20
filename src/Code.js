@@ -1,5 +1,5 @@
 import React from "react";
-
+import "styled-components/macro";
 import Highlight, { defaultProps } from "prism-react-renderer";
 import { ACTIVE_TAB, RESULT_CODE, GET_THEME } from "./constants";
 import { Code, Wrapper } from "./elements";
@@ -54,12 +54,11 @@ export default ({ theme, code, language = "json", setTab, tab }) => {
       <button
         type="button"
         css={`
-          position: fixed;
-          bottom: 20px;
-          right: calc(50% - 20px);
-          transform: translateX(-100%);
+          position: absolute;
+          bottom: 90px;
+          right: 20px;
         `}
-        className="inline-flex items-center px-4 py-2 border border-gray-300 text-base leading-6 font-medium rounded-md text-gray-700 bg-blue hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150"
+        className="inline-flex items-center px-4 py-2 border border-gray-300 text-base leading-6 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150"
         onClick={() => {}}
       >
         Copy to Clipboard

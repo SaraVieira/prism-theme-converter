@@ -25,6 +25,7 @@ export const Textarea = styled.textarea`
 `;
 
 export const Code = styled.pre`
+  position: relative;
   padding: 20px;
   height: calc(100vh - 180px);
   overflow: scroll;
@@ -34,6 +35,5 @@ export const Code = styled.pre`
   white-space: pre-wrap;
 `;
 export const Wrapper = styled.div`
-  height: calc(100vh - 180px);
   position: relative;
 `;
