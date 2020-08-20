@@ -11,25 +11,21 @@ import { PLACEHOLDER, GET_THEME } from "./constants";
 
 export default function App() {
   const texterea = useRef();
-  const [error, setError] = useState(false);
   const [tab, setTab] = useState("prism");
   const [theme, setTheme] = useState();
   const [vsCodeTheme, setVSCodeTheme] = useState("");
 
   const createPrismTheme = () => {
     let t = "";
-    setError(false);
 
     try {
       // eslint-disable-next-line
       t = eval("(" + decomment(vsCodeTheme) + ")");
     } catch (e) {
-      setError(true);
       return setTheme(`
     // not a valid VSCode Theme
   `);
     }
-    setError(true);
     if (!t || t.$schema !== "vscode://schemas/color-theme") {
       return setTheme(`
       // not a valid VSCode Theme
@@ -48,7 +44,7 @@ export default function App() {
             placeholder={PLACEHOLDER}
             value={vsCodeTheme}
             ref={texterea}
-            onChange={e => {
+            onChange={(e) => {
               setVSCodeTheme(e.target.value);
               window.setTimeout(() => {
                 texterea.current.scrollTo(0, 0);
