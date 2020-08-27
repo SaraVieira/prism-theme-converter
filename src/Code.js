@@ -1,10 +1,15 @@
 import React from "react";
 import "styled-components/macro";
+import useClipboard from "react-use-clipboard";
 import Highlight, { defaultProps } from "prism-react-renderer";
 import { ACTIVE_TAB, RESULT_CODE, GET_THEME } from "./constants";
 import { Code, Wrapper } from "./elements";
 
 export default ({ theme, code, language = "json", setTab, tab }) => {
+  const ResultCode = RESULT_CODE(theme, code, tab);
+  const [isCopied, setCopied] = useClipboard(ResultCode, {
+    successDuration: 1000,
+  });
   return (
     <Wrapper>
       <div>
@@ -36,7 +41,7 @@ export default ({ theme, code, language = "json", setTab, tab }) => {
       <Highlight
         {...defaultProps}
         theme={GET_THEME(theme)}
-        code={RESULT_CODE(theme, code, tab)}
+        code={ResultCode}
         language={language}
       >
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
@@ -59,9 +64,9 @@ export default ({ theme, code, language = "json", setTab, tab }) => {
           right: 20px;
         `}
         className="inline-flex items-center px-4 py-2 border border-gray-300 text-base leading-6 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150"
-        onClick={() => {}}
+        onClick={setCopied}
       >
-        Copy to Clipboard
+        {isCopied ? "Copied" : "Copy"} to Clipboard
       </button>
     </Wrapper>
   );

@@ -10,7 +10,7 @@ import { template } from "./make-theme/template";
 import { PLACEHOLDER, GET_THEME } from "./constants";
 
 export default function App() {
-  const texterea = useRef();
+  const textarea = useRef();
   const [tab, setTab] = useState("prism");
   const [theme, setTheme] = useState();
   const [vsCodeTheme, setVSCodeTheme] = useState("");
@@ -43,11 +43,11 @@ export default function App() {
           <Textarea
             placeholder={PLACEHOLDER}
             value={vsCodeTheme}
-            ref={texterea}
+            ref={textarea}
             onChange={(e) => {
               setVSCodeTheme(e.target.value);
               window.setTimeout(() => {
-                texterea.current.scrollTo(0, 0);
+                textarea.current.scrollTo(0, 0);
               }, 0);
             }}
           />
