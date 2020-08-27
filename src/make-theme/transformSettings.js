@@ -1,11 +1,5 @@
-type Output = {
-  color?: string;
-  backgroundColor?: string;
-  fontStyle?: string;
-};
-
-export const transformSettings = settings => {
-  const output: Output = {};
+export const transformSettings = (settings) => {
+  const output = {};
 
   if (settings.foreground) {
     output.color = settings.foreground.toString();
@@ -15,8 +9,8 @@ export const transformSettings = settings => {
     output.backgroundColor = settings.background.toString();
   }
 
-  if (settings.fontStyle === 'italic') {
-    output.fontStyle = 'italic';
+  if (settings.fontStyle === "italic") {
+    output.fontStyle = "italic";
   }
 
   return output;

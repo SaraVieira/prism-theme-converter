@@ -2,7 +2,7 @@ body {
   padding: 0;
   margin: 0;
   background: #eaeaea;
-  overflow: hidden;
+  overflow: auto;
 }
 
 body * {

@@ -4,18 +4,19 @@ export const InputArea = styled.div`
   display: grid;
   grid-template-columns: 50% 50%;
   position: relative;
-  overflow: scroll;
+  overflow: auto;
 `;
 
 export const Main = styled.main`
   width: 100vw;
   height: 100vh;
   padding: 0;
+  overflow: hidden;
 `;
 
 export const Textarea = styled.textarea`
   width: 100%;
-  height: 100%;
+  height: 93%;
   border: none;
   color: #f1f1f1;
   background: #252222;

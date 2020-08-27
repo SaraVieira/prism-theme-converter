@@ -1,22 +1,44 @@
 import React from "react";
 import "styled-components/macro";
 import useClipboard from "react-use-clipboard";
+import { template } from "./make-theme/template";
+import { toSyntaxHighlighter } from "./make-theme/highlighterTheme";
 import Highlight, { defaultProps } from "prism-react-renderer";
-import { ACTIVE_TAB, RESULT_CODE, GET_THEME } from "./constants";
+import { ACTIVE_TAB, RESULT_CODE, GET_THEME, BUTTON_STYLES } from "./constants";
 import { Code, Wrapper } from "./elements";
 
-export default ({ theme, code, language = "json", setTab, tab }) => {
-  const ResultCode = RESULT_CODE(theme, code, tab);
+export default ({ theme, code, language = "json", setTab, tab, error }) => {
+  const getCode = () => {
+    if (!theme) return null;
+    if (error) {
+      return theme;
+    }
+
+    if (tab === "prism") return template(theme);
+    if (tab === "react") return theme;
+    if (tab === "highlighter")
+      return `export default ${JSON.stringify(
+        toSyntaxHighlighter(template(theme)),
+        null,
+        4
+      )}`;
+  };
+
+  const ResultCode = RESULT_CODE(theme, getCode(code), tab);
   const [isCopied, setCopied] = useClipboard(ResultCode, {
     successDuration: 1000,
   });
+
+  console.log(ResultCode);
+
   return (
     <Wrapper>
       <div>
         <div className="sm:hidden">
           <select className="form-select block w-full">
-            <option selected>Prism Theme</option>
-            <option>Prims React Renderer Theme</option>
+            <option selected>Prism</option>
+            <option>Prims React Renderer</option>
+            <option>React Syntax Highlighter</option>
           </select>
         </div>
         <div className="hidden sm:block">
@@ -26,13 +48,19 @@ export default ({ theme, code, language = "json", setTab, tab }) => {
                 onClick={() => setTab("prism")}
                 className={ACTIVE_TAB(tab === "prism")}
               >
-                Prism Theme
+                Prism
               </button>
               <button
                 onClick={() => setTab("react")}
                 className={ACTIVE_TAB(tab === "react")}
               >
-                Prism React Renderer Theme
+                Prism React Renderer
+              </button>
+              <button
+                onClick={() => setTab("highlighter")}
+                className={ACTIVE_TAB(tab === "highlighter")}
+              >
+                React Syntax Highlighter
               </button>
             </nav>
           </div>
@@ -63,7 +91,7 @@ export default ({ theme, code, language = "json", setTab, tab }) => {
           bottom: 90px;
           right: 20px;
         `}
-        className="inline-flex items-center px-4 py-2 border border-gray-300 text-base leading-6 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150"
+        className={BUTTON_STYLES}
         onClick={setCopied}
       >
         {isCopied ? "Copied" : "Copy"} to Clipboard

@@ -1,8 +1,10 @@
-export const template = theme => `code[class*="language-"],
+export const template = (theme) => `code[class*="language-"],
 pre[class*="language-"] {
-  color: ${theme.plain.color ||
-    theme.styles.find(style => style.types.includes("punctuation")).style
-      .color};
+  color: ${
+    theme.plain.color ||
+    theme.styles.find((style) => style.types.includes("punctuation")).style
+      .color
+  };
   font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
   text-align: left;
   white-space: pre;
@@ -64,10 +66,10 @@ pre[class*="language-"] {
 }
 
 ${theme.styles
-  .map(style =>
+  .map((style) =>
     style.types
       .map(
-        type => `
+        (type) => `
 .token.${type} {
   color: ${style.style.color};
   ${style.style.fontStyle ? `font-style: ${style.style.fontStyle}` : ""}
