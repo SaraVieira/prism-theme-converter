@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import { makeTheme } from "./make-theme";
 import decomment from "decomment";
 import Code from "./Code";
