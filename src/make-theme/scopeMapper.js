@@ -29,6 +29,8 @@ const scopeMap = {
   'meta.tag.js': 'tag',
   'support.function': 'builtin',
   'variable.other.constant': 'builtin',
+  'variable.other.meta.import.js': 'imports',
+  'variable.other.meta.export.js': 'exports',
   'constant.language': 'builtin',
   'keyword.control': 'keyword',
   'keyword.other': 'keyword',
