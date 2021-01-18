@@ -29,8 +29,6 @@ export default ({ theme, code, language = "json", setTab, tab, error }) => {
     successDuration: 1000,
   });
 
-  console.log(ResultCode);
-
   return (
     <Wrapper>
       <div>
