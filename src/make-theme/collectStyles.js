@@ -1,3 +1,5 @@
+/* eslint-disable-file array-callback-return */
+
 import { mapScope } from "./scopeMapper";
 import { getScoreForScope } from "./scopeScore";
 import { transformSettings } from "./transformSettings";
@@ -18,8 +20,6 @@ export const collectAllSettings = (tokenColors) => {
       return;
     }
 
-    console.log(normScope);
-
     normScope.forEach((scopeName) => {
       const mappedScope = mapScope(scopeName);
       // Return when no mapping scope has been returned
@@ -27,9 +27,8 @@ export const collectAllSettings = (tokenColors) => {
         return;
       }
 
-      console.log(scopeName);
-
       if (Array.isArray(mappedScope)) {
+        // eslint-disable-next-line
         mappedScope.map((scope) => {
           if (output[scope] === undefined) {
             output[scope] = [];
