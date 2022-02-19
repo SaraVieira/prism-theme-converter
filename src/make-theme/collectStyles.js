@@ -18,12 +18,16 @@ export const collectAllSettings = (tokenColors) => {
       return;
     }
 
+    console.log(normScope);
+
     normScope.forEach((scopeName) => {
       const mappedScope = mapScope(scopeName);
       // Return when no mapping scope has been returned
       if (!mappedScope) {
         return;
       }
+
+      console.log(scopeName);
 
       if (Array.isArray(mappedScope)) {
         mappedScope.map((scope) => {

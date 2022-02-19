@@ -1,6 +1,7 @@
 const scopeMap = {
   comment: "comment",
   punctuation: "punctuation",
+  "punctuation.section.array": "punctuation",
   string: "string",
   variable: "variable",
   constant: "constant",
