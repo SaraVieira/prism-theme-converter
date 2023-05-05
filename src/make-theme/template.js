@@ -28,7 +28,7 @@ pre[class*="language-"] ::-moz-selection,
 code[class*="language-"]::-moz-selection,
 code[class*="language-"] ::-moz-selection {
   text-shadow: none;
-  background: ${theme.plain.backgroundColor};
+  background: ${theme.plain.selectionBackground};
 }
 
 pre[class*="language-"]::selection,
@@ -36,7 +36,7 @@ pre[class*="language-"] ::selection,
 code[class*="language-"]::selection,
 code[class*="language-"] ::selection {
   text-shadow: none;
-  background: ${theme.plain.backgroundColor};
+  background: ${theme.plain.selectionBackground};
 }
 
 @media print {
