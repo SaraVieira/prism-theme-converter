@@ -9,6 +9,7 @@ export const makeTheme = (theme) => {
         theme.tokenColors.find((token) => token.scope === "support").settings
           .foreground,
       backgroundColor: theme.colors["editor.background"],
+      selectionBackground: theme.colors["editor.selectionBackground"],
     },
     ...prismTheme,
   };
